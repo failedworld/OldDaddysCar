@@ -1,24 +1,112 @@
-# Compiled class file
-*.class
+Skip to content
+Search or jump to…
+Pull requests
+Issues
+Codespaces
+Marketplace
+Explore
+ 
+@failedworld 
+We are having a problem billing your account. Please enter a new payment method or check with your payment provider for details on why the transaction failed. You can downgrade to GitHub Free in your Billing settings.
+You can always contact support with any questions.
+baiyuwubing
+/
+cocos-creator-examples
+Public
+Fork your own copy of baiyuwubing/cocos-creator-examples
+Code
+Issues
+6
+Pull requests
+1
+Actions
+Projects
+Security
+Insights
+cocos-creator-examples/runMan/.gitignore
+Cannot retrieve latest commit at this time.
+ 0 contributors
+Executable File  67 lines (54 sloc)  1.52 KB
 
-# Log file
+#/////////////////////////////////////////////////////////////////////////////
+# Fireball Projects
+#/////////////////////////////////////////////////////////////////////////////
+
+library/
+temp/
+local/
+build/
+
+#/////////////////////////////////////////////////////////////////////////////
+# Logs and databases
+#/////////////////////////////////////////////////////////////////////////////
+
 *.log
+*.sql
+*.sqlite
 
-# BlueJ files
-*.ctxt
+#/////////////////////////////////////////////////////////////////////////////
+# files for debugger
+#/////////////////////////////////////////////////////////////////////////////
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
+*.sln
+*.csproj
+*.pidb
+*.unityproj
+*.suo
 
-# Package Files #
-*.jar
-*.war
-*.nar
-*.ear
-*.zip
-*.tar.gz
-*.rar
+#/////////////////////////////////////////////////////////////////////////////
+# OS generated files
+#/////////////////////////////////////////////////////////////////////////////
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
-replay_pid*
+.DS_Store
+ehthumbs.db
+Thumbs.db
+
+#/////////////////////////////////////////////////////////////////////////////
+# exvim files
+#/////////////////////////////////////////////////////////////////////////////
+
+*UnityVS.meta
+*.err
+*.err.meta
+*.exvim
+*.exvim.meta
+*.vimentry
+*.vimentry.meta
+*.vimproject
+*.vimproject.meta
+.vimfiles.*/
+.exvim.*/
+quick_gen_project_*_autogen.bat
+quick_gen_project_*_autogen.bat.meta
+quick_gen_project_*_autogen.sh
+quick_gen_project_*_autogen.sh.meta
+.exvim.app
+
+#/////////////////////////////////////////////////////////////////////////////
+# webstorm files
+#/////////////////////////////////////////////////////////////////////////////
+
+.idea/
+
+#//////////////////////////
+# VS Code
+#//////////////////////////
+
+.vscode/
+Footer
+© 2023 GitHub, Inc.
+Footer navigation
+Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
+cocos-creator-examples/.gitignore at master · baiyuwubing/cocos-creator-examples

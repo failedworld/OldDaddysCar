@@ -11,6 +11,10 @@ export default class GameState extends cc.Component {
 
     private score = 0
 
+    private obsFallingSpeed = 0
+
+    private obsGenerateJudging = 0
+
     public static get instance():GameState{
         if (!GameState._instance){
             GameState._instance = new GameState();
@@ -37,6 +41,22 @@ export default class GameState extends cc.Component {
     public resetAll(){
         this.score = 0
         this.gameState = 'GameStart'
+    }
+
+    public getObsFallingSpeed(){
+        return this.obsFallingSpeed;
+    }
+
+    public setObsFallingSpeed(newSpeed){
+        this.obsFallingSpeed = newSpeed
+    }
+
+    public getObsGenerateJudging(){
+        return this.obsGenerateJudging;
+    }
+
+    public setObsGenerateJudging(ObsGenerateJudging){
+        this.obsGenerateJudging = ObsGenerateJudging
     }
 
 

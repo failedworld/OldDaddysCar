@@ -33,8 +33,8 @@ export default class Obstacle extends cc.Component {
     update (dt) {
         if (GameState.instance.getGameState() == 'GameOver')
             return
-            
-        this.node.y -= (this.speed + this.speedUp) * dt
+        let timerSpeedUp = GameState.instance.getObsFallingSpeed()
+        this.node.y -= (this.speed + this.speedUp + timerSpeedUp) * dt
         if (this.node.y < -1140){
             // ObstaclesPool.instance.deleteObs(this.node)
             this.node.destroy()

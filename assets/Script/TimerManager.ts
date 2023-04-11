@@ -7,33 +7,31 @@ export default class TimerManager extends cc.Component {
 
     @property(cc.Integer)
     // 60 seconds 
-    deltaTime: number = 60;
+    deltaTime: number = 10;
 
-    @property(cc.Prefab)
-    obsPre: cc.Prefab = null;
+    @property(cc.Integer)
+    deltaSpeedUp: number = 300;
 
-    // LIFE-CYCLE CALLBACKS:
-
-    // onLoad () {}
 
     start () {
+        // 添加计时器
         let self = this
         this.schedule(this.changeObsSpeed,self.deltaTime) 
-        console.log('========scheduled=========')
+        console.log('======== Timer scheduled=========')
     }
 
+
+    // 改变障碍物下落时间
     changeObsSpeed(){
         if (GameState.instance.getGameState() == 'GameOver'){
             console.log('========unscheduled=========')
             this.unschedule(this.changeObsSpeed)
         }else{
             // console.log('========unscheduled=========')
-            let obs = cc.instantiate(this.obsPre)
-            obs.setParent(cc.director.getScene())
-            obs.y = this.node.y;
-            obs.x = Math.random() * 1080 + 20
-            // obs.getComponent(Obstacle).setSpeed(1600)
-            // ObstaclesPool.instance.addObs(obs)
+            let nowSpeed = GameState.instance.getObsFallingSpeed()
+            GameState.instance.setObsFallingSpeed(nowSpeed + this.deltaSpeedUp)
+
+            console.log('======== Falling Speed up =========')
         }
 
         

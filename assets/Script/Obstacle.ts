@@ -40,10 +40,12 @@ export default class Obstacle extends cc.Component {
             this.node.destroy()
         }
 
-        if (this.node.y < -700 && this.isPassed == false){
-            GameState.instance.addScore()
-            this.isPassed = true
-        }
+        // new score adding method
+        
+        // if (this.node.y < -700 && this.isPassed == false){
+        //     GameState.instance.addScore()
+        //     this.isPassed = true
+        // }
     }
 
     setSpeed(speed){

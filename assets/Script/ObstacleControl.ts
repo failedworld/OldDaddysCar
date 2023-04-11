@@ -13,6 +13,9 @@ export default class ObstacleControl extends cc.Component {
     @property(cc.Prefab)
     obsPre: cc.Prefab = null;
 
+    @property(cc.Integer)
+    ObsTotalNumbersInLine: number = 10
+
     // LIFE-CYCLE CALLBACKS:
 
     // onLoad () {}
@@ -28,7 +31,34 @@ export default class ObstacleControl extends cc.Component {
             console.log('========unscheduled=========')
             this.unschedule(this.generateObs)
         }else{
-            // console.log('========unscheduled=========')
+            // generate obs
+            // let obs = cc.instantiate(this.obsPre)
+            // obs.setParent(cc.director.getScene())
+
+            // // adding obs generating judgements
+            // obs.y = this.node.y;
+            // obs.x = Math.random() * 1080 + 20
+            // obs.getComponent(Obstacle).setSpeed(1600)
+            // ObstaclesPool.instance.addObs(obs)
+
+            this.gerateObsByAlgorithm()
+        }
+
+        
+    }
+
+    gerateObsByAlgorithm(){
+
+        let screenWidth = 200;
+        let randomNumber = Math.random()
+
+        let generateNumber = 1
+        if (randomNumber < GameState.instance.getObsGenerateJudging()) {
+            generateNumber = Math.round(Math.random() * this.ObsTotalNumbersInLine)
+        }
+
+        for (let i = 0; i < generateNumber; i++) {
+            // generate obs
             let obs = cc.instantiate(this.obsPre)
             obs.setParent(cc.director.getScene())
             obs.y = this.node.y;
@@ -37,7 +67,7 @@ export default class ObstacleControl extends cc.Component {
             ObstaclesPool.instance.addObs(obs)
         }
 
-        
+
     }
 
     // update (dt) {

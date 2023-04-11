@@ -13,7 +13,9 @@ export default class GameState extends cc.Component {
 
     private obsFallingSpeed = 0
 
-    private obsGenerateJudging = 0
+    private obsGenerateJudging = 0.1
+
+    private addingNumber = 1
 
     public static get instance():GameState{
         if (!GameState._instance){
@@ -31,8 +33,17 @@ export default class GameState extends cc.Component {
     }
 
     public addScore(){
-        this.score += 1
+        this.score += this.addingNumber
     }
+
+    public getAddingNumber(){
+        return this.addingNumber
+    }
+
+    public setAddingNumber(addingNumber){
+        this.addingNumber = addingNumber
+    }
+    
 
     public getScore(){
         return this.score
@@ -41,6 +52,9 @@ export default class GameState extends cc.Component {
     public resetAll(){
         this.score = 0
         this.gameState = 'GameStart'
+        this.obsFallingSpeed = 0
+        this.addingNumber = 1
+        this.obsGenerateJudging = 0.1
     }
 
     public getObsFallingSpeed(){

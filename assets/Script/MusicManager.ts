@@ -5,6 +5,8 @@ export default class MusicManager extends cc.Component {
 
     private static  _instance:MusicManager = null
 
+    private soundsClip:{[key:string]:any} = {};
+
 
     public static get instance():MusicManager{
         if (!MusicManager._instance){
@@ -13,15 +15,38 @@ export default class MusicManager extends cc.Component {
         return this._instance
     }
 
-    private _musicAs: cc.AudioSource;
-    private _soundAs: cc.AudioSource;
+    private _musicAs: cc.AudioSource = null;
+    private _soundAs: cc.AudioSource = null;
 
     private static readonly MinMusicVolume:number = 0;
-    private static readonly MaxMusicVolume:number = 0.5;
+    private static readonly MaxMusicVolume:number = 1;
     private static readonly MinSoundVolume:number = 0;
     private static readonly MaxSoundVolume: number = 1;
     private static readonly MusicFadeDuration: number = 1;
     private static readonly MusicFadeInterval: number = 0.05;
+
+    public loadMusic(){
+        cc.loader.loadResDir('Music', cc.AudioClip, function(err, clips){
+            console.log('========= load clip =======')
+            if (err){
+                console.error(err);
+            }
+            for (let i = 0; i < clips.length; i++){
+                console.log(clips[i].name)
+                MusicManager.instance.addMusic(clips[i].name,clips[i])
+            }
+        })
+
+    }
+
+    public addMusic(key:string,clip:cc.AudioClip){
+        this.soundsClip[key] = clip;
+    }
+
+    public getMusic(key:string):cc.AudioClip{
+        return this.soundsClip[key];
+    }
+
 
     public get isSoundMute():boolean
     {
@@ -37,7 +62,7 @@ export default class MusicManager extends cc.Component {
         this.myDestroy();
     }
 
-    private init(): void
+    public init(): void
     { 
         this._musicAs = this.createAs(MusicManager.MaxMusicVolume, true);
         this._soundAs = this.createAs(MusicManager.MaxSoundVolume, false);
@@ -45,7 +70,7 @@ export default class MusicManager extends cc.Component {
 
     private createAs(volume:number, isLoop:boolean): cc.AudioSource
     { 
-        let curAs: cc.AudioSource = this.node.addComponent(cc.AudioSource);
+        let curAs: cc.AudioSource = new cc.AudioSource();
         curAs.clip = null;
         curAs.loop = isLoop;
         // curAs.playOnAwake = false;
@@ -55,8 +80,8 @@ export default class MusicManager extends cc.Component {
 
     public myDestroy():void
     { 
-        let nowNode:cc.Node = MusicManager.instance.node;
-        nowNode.destroy();
+        // let nowNode:cc.Node = MusicManager.instance.node;
+        // nowNode.destroy();
         MusicManager._instance = null;
     }
 
@@ -117,6 +142,7 @@ export default class MusicManager extends cc.Component {
             this._musicAs.play();
             this.schedule(this.musicFadeIn, MusicManager.MusicFadeInterval, MusicManager.MusicFadeDuration / MusicManager.MusicFadeInterval, 0);
         }
+
      
     }
 

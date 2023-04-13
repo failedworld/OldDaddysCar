@@ -6,6 +6,7 @@
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 
 import GameState from "./GameState";
+import MusicManager from "./MusicManager";
 
 const {ccclass, property} = cc._decorator;
 
@@ -17,16 +18,24 @@ export default class GameLogic extends cc.Component {
     @property(cc.Node)
     gameoverPanel:cc.Node = null
 
+    private musicName: string = 'modern-vlog-140795'
+
     onLoad(){
         // 结束面板隐藏
         this.gameoverPanel.active = false
-
+        
+        let soundClip = MusicManager.instance.getMusic(this.musicName)
+        // MusicManager.instance.playMusic(soundClip)
+        let musicAs = new cc.AudioSource()
+        musicAs.clip = soundClip
+        musicAs.loop = true
+        musicAs.volume = 100
+        musicAs.play()
+        console.log('======== music is playing =========')
     }
  
     start () {
-
         
-
     }
 
     gameOver(){

@@ -25,12 +25,12 @@ export default class GameLogic extends cc.Component {
         this.gameoverPanel.active = false
         
         let soundClip = MusicManager.instance.getMusic(this.musicName)
-        // MusicManager.instance.playMusic(soundClip)
-        let musicAs = new cc.AudioSource()
-        musicAs.clip = soundClip
-        musicAs.loop = true
-        musicAs.volume = 100
-        musicAs.play()
+        MusicManager.instance.playMusic(soundClip)
+        // let musicAs = new cc.AudioSource()
+        // musicAs.clip = soundClip
+        // musicAs.loop = true
+        // musicAs.volume = 100
+        // musicAs.play()
         console.log('======== music is playing =========')
     }
  

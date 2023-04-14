@@ -5,7 +5,7 @@ export default class MusicManager extends cc.Component {
 
     private static  _instance:MusicManager = null
 
-    private soundsClip:{[key:string]:any} = {};
+    private static soundsClip:{[key:string]:any} = {};
 
 
     public static get instance():MusicManager{
@@ -40,11 +40,12 @@ export default class MusicManager extends cc.Component {
     }
 
     public addMusic(key:string,clip:cc.AudioClip){
-        this.soundsClip[key] = clip;
+        MusicManager.soundsClip[key] = clip;
     }
 
     public getMusic(key:string):cc.AudioClip{
-        return this.soundsClip[key];
+        // console.log('getMusic====',this.soundsClip[key],'=====',key )
+        return MusicManager.soundsClip[key];
     }
 
 
@@ -59,6 +60,7 @@ export default class MusicManager extends cc.Component {
 
     onDestroy()
     {
+        console.log('onDestroy======')
         this.myDestroy();
     }
 
@@ -164,5 +166,9 @@ export default class MusicManager extends cc.Component {
     { 
         this._soundAs.clip = clip; 
         this._soundAs.play()
+    }
+
+    public stopPlay(){
+        this._musicAs.stop();
     }
 }

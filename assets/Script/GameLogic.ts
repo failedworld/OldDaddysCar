@@ -24,7 +24,9 @@ export default class GameLogic extends cc.Component {
         // 结束面板隐藏
         this.gameoverPanel.active = false
         
+        MusicManager.instance.init()
         let soundClip = MusicManager.instance.getMusic(this.musicName)
+        // console.log('soundClip', soundClip)
         MusicManager.instance.playMusic(soundClip)
         // let musicAs = new cc.AudioSource()
         // musicAs.clip = soundClip
@@ -47,6 +49,7 @@ export default class GameLogic extends cc.Component {
        let scorelbl = gameOverScoreLblNode.getComponent(cc.Label)
        console.log('score ======= ' + scorelbl.string)
        scorelbl.string = 'Score:' + GameState.instance.getScore()
+       MusicManager.instance.stopPlay()
     //    .string = 'Score:' + GameState.instance.getScore
 
        console.log('=========game over =============')
@@ -56,6 +59,7 @@ export default class GameLogic extends cc.Component {
         GameState.instance.resetAll()
         this.gameoverPanel.active = false
         cc.director.loadScene('Game')
+        
     }
 
     public gameGiveup(){

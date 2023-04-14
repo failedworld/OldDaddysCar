@@ -11,7 +11,7 @@ export default class LoginLogic extends cc.Component {
     }
 
     public gameStart(){
-        MusicManager.instance.init()
+        // MusicManager.instance.init()
         MusicManager.instance.loadMusic()
         cc.director.loadScene('Game')
     }

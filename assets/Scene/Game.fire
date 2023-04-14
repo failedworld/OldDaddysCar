@@ -1948,7 +1948,7 @@
       "__id__": 41
     },
     "_enabled": true,
-    "backForce": 0.1,
+    "backForce": 0.3,
     "gameLogic": {
       "__id__": 3
     },
@@ -2271,7 +2271,7 @@
     "obsPre": {
       "__uuid__": "2fc94003-2ac3-490e-a8dd-83668c54c2c3"
     },
-    "ObsTotalNumbersInLine": 10,
+    "ObsTotalNumbersInLine": 4,
     "_id": "c3VwdZUW1FJJPPWoZUDE93"
   },
   {

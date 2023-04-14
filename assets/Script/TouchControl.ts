@@ -22,14 +22,16 @@ export default class TouchControl extends cc.Component {
 
     touchBegin(event:cc.Event.EventTouch){
         let pos = event.getLocation()
-        if (pos.x > 1080 / 2){
-            console.log("=====click right=====")
-            this.daddyCar.getComponent(DaddyCar).setPower(5)
-        }
-        else{
-            this.daddyCar.getComponent(DaddyCar).setPower(-5)
-            console.log("=====click left======")
-        }
+        // if (pos.x > 1080 / 2){
+        //     console.log("=====click right=====")
+        //     this.daddyCar.getComponent(DaddyCar).setPower(5)
+        // }
+        // else{
+        //     this.daddyCar.getComponent(DaddyCar).setPower(-5)
+        //     console.log("=====click left======")
+        // }
+        console.log("=====click right=====")
+        this.daddyCar.getComponent(DaddyCar).setPower(5)
 
     }
 }

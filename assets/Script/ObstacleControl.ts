@@ -14,7 +14,7 @@ export default class ObstacleControl extends cc.Component {
     obsPre: cc.Prefab = null;
 
     @property(cc.Integer)
-    ObsTotalNumbersInLine: number = 10
+    ObsTotalNumbersInLine: number = 4
 
     // LIFE-CYCLE CALLBACKS:
 
@@ -51,10 +51,16 @@ export default class ObstacleControl extends cc.Component {
 
         let screenWidth = 200;
         let randomNumber = Math.random()
-
+        console.log('random number: ' , randomNumber)
         let generateNumber = 1
         if (randomNumber < GameState.instance.getObsGenerateJudging()) {
-            generateNumber = Math.round(Math.random() * this.ObsTotalNumbersInLine)
+            let roundNum = Math.random() 
+            console.log('newRandom:',roundNum)
+            console.log('total in line :',this.ObsTotalNumbersInLine)
+            roundNum = roundNum * this.ObsTotalNumbersInLine
+            console.log('generate number: ' , roundNum)
+            generateNumber = Math.round(roundNum)
+            console.log('generate number: ' , generateNumber)
         }
 
         for (let i = 0; i < generateNumber; i++) {
@@ -64,7 +70,7 @@ export default class ObstacleControl extends cc.Component {
             obs.y = this.node.y;
             obs.x = Math.random() * 1080 + 20
             obs.getComponent(Obstacle).setSpeed(1600)
-            ObstaclesPool.instance.addObs(obs)
+            // ObstaclesPool.instance.addObs(obs)
         }
 
 

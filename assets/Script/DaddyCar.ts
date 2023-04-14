@@ -18,7 +18,7 @@ export default class DaddyCar extends cc.Component {
     power = 0
 
     @property(cc.Float)
-    backForce = 0.0
+    backForce = 0.3
 
     @property(cc.Node)
     gameLogic:cc.Node = null
@@ -38,11 +38,11 @@ export default class DaddyCar extends cc.Component {
         if (GameState.instance.getGameState() == 'GameOver')
             return
 
-        if (this.power > 0 )
-            this.power -= this.backForce
+        //  if (this.power >= 0 )
+        this.power -= this.backForce
         
-        if (this.power < 0)
-            this.power += this.backForce
+        // if (this.power < 0)
+        //     this.power += this.backForce
 
         this.node.x += this.power
 
